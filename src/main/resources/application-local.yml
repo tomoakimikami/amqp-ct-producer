@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    driver-class-name:  net.sf.log4jdbc.DriverSpy
+    url:                jdbc:log4jdbc:oracle:thin:@localhost:1521:XE
+    username:           HR
+    password:           HR
+    schema:             HR
+  rabbitmq:
+    addresses: localhost:5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      concurrency: 3
+      max-concurrency: 5
+  batch:
+    initializer:
+      enabled: false
+logging:
+    level:
+        rabbitmq.console: DEBUG
+        org.springframework.boot.autoconfigure: INFO
+        org.springframework.amqp.rabbit.core.RabbitTemplate: DEBUG
+        org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer: DEBUG
+        org.springframework.transaction.interceptor: TRACE
+        org.mybatis: INFO
+        jdbc.connection: OFF
+        jdbc.sqltiming: INFO
+        jdbc.audit: INFO
+        jdbc.resultset: OFF
+        jdbc.sqlonly: OFF
